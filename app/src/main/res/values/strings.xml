@@ -3,6 +3,7 @@
     <string name="button">Button</string>
     <string name="homeUserName">Your Name :</string>
     <string name="homeUserPlay">Continue</string>
+    <string name="homeUserBack">Back</string>
     <string name="gameMenu">Try And Win....!</string>
     <string name="menuBtnPlay">Start</string>
     <string name="menuBtnExit">Exit</string>

@@ -19,12 +19,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void buttonConfigure(){
         Button statBtn = (Button) findViewById(R.id.btn_continue);
+        Button backBtn = (Button) findViewById(R.id.btn_continue3);
+
         statBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,level_1.class));
             }
         });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,game_menu.class));
+            }
+        });
+
     }
 
 }
