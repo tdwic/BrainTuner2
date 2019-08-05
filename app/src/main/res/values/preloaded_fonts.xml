@@ -3,7 +3,9 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aladin</item>
         <item>@font/alef</item>
+        <item>@font/arizonia</item>
         <item>@font/artifika</item>
         <item>@font/berkshire_swash</item>
+        <item>@font/fontdiner_swanky</item>
     </array>
 </resources>
