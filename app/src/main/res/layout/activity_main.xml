@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/font"
+        android:id="@+id/btn_continue"
         android:layout_width="241dp"
         android:layout_height="82dp"
         android:layout_marginStart="8dp"
