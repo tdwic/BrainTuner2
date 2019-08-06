@@ -8,6 +8,33 @@
     <string name="menuBtnPlay">Start</string>
     <string name="menuBtnExit">Exit</string>
 
+    <!--Level 1-->
+    <string name="time1">01:00</string>
+    <string name="answer">Answer</string>
+
+    <string name="row1_1">7</string>
+    <string name="row1_2">+</string>
+    <string name="row1_3">1</string>
+
+    <string name="row2_1">6</string>
+    <string name="row2_2">+</string>
+    <string name="row2_3">2</string>
+
+    <string name="row3_1">5</string>
+    <string name="row3_2">+</string>
+    <string name="row3_3">3</string>
+
+    <string name="button1">1</string>
+    <string name="button2">2</string>
+    <string name="button3">3</string>
+    <string name="button4">4</string>
+    <string name="button5">5</string>
+    <string name="button6">6</string>
+    <string name="button7">7</string>
+    <string name="button8">8</string>
+    <string name="button9">9</string>
+    <string name="button10">0</string>
+    <string name="button11">DEL</string>
 
     <!--level 2-->
 
