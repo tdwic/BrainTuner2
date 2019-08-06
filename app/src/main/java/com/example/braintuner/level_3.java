@@ -17,7 +17,7 @@ public class level_3 extends AppCompatActivity {
     }
 
     private void buttonConfigure(){
-        Button statBtn = (Button) findViewById(R.id.button_level_3);
+        Button statBtn = (Button) findViewById(R.id.button_level_3_a);
         statBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

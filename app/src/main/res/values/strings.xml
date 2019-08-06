@@ -9,6 +9,72 @@
     <string name="menuBtnExit">Exit</string>
 
 
+    <!--level 2-->
+
+    <string name="time">01:00</string>
+
+    <string name="grid1">7</string>
+    <string name="grid2">5</string>
+    <string name="grid3">9</string>
+    <string name="grid4">-</string>
+    <string name="grid5">-</string>
+    <string name="grid6">-</string>
+    <string name="grid7">2</string>
+    <string name="grid8">3</string>
+    <string name="grid9">4</string>
+
+    <string name="butt1">1</string>
+    <string name="butt2">2</string>
+    <string name="butt3">3</string>
+    <string name="butt4">4</string>
+    <string name="butt5">5</string>
+    <string name="butt6">6</string>
+    <string name="butt7">7</string>
+    <string name="butt8">8</string>
+    <string name="butt9">9</string>
+    <string name="butt0">0</string>
+    <string name="dele">DEL</string>
+
+    <!--level 2.1-->
+
+    <string name="tim">00:30</string>
+
+    <string name="gride1">-27</string>
+    <string name="gride2">5</string>
+    <string name="gride3">-9</string>
+    <string name="gride4">-</string>
+    <string name="gride5">-</string>
+    <string name="gride6">-</string>
+    <string name="gride7">2</string>
+    <string name="gride8">-3</string>
+    <string name="gride9">-4</string>
+
+
+    <!--le 3-->
+    <string name="l3btn0">0</string>
+    <string name="l3btn1">1</string>
+    <string name="l3btn3">3</string>
+    <string name="l3btn6">6</string>
+    <string name="l3btn2">2</string>
+    <string name="l3btn5">5</string>
+    <string name="l3btn7">7</string>
+    <string name="l3btn9">9</string>
+    <string name="l3btn4">4</string>
+    <string name="l3btn8">8</string>
+    <string name="txtv2">25</string>
+    <string name="txtv3">25</string>
+    <string name="txtv4">25</string>
+    <string name="txtv5">25</string>
+    <string name="txtv6">25</string>
+    <string name="txtv7">25</string>
+    <string name="txtv8">25</string>
+    <string name="txtv9">25</string>
+    <string name="l3btnans">Answer</string>
+    <string name="l3btndel">Del</string>
+    <string name="l3txtv1"> </string>
+
+    <string name="l3txtv">01:00</string>
+
     <!--Level 4-->
     <string name="time4">01:00</string>
     <string name="answer4">Answer</string>
