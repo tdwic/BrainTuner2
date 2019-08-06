@@ -35,4 +35,9 @@
 
 
 
+
+    <!--Score page-->
+    <string name="playBtnScore">Play  Again</string>
+    <string name="exitBtnScore">Exit</string>
+
 </resources>
