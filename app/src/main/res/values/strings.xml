@@ -34,4 +34,9 @@
     <string name="num4_0">0</string>
     <string name="num4_del">Del</string>
 
+
+    <!--Score page-->
+    <string name="playBtnScore">Play  Again</string>
+    <string name="exitBtnScore">Exit</string>
+
 </resources>
