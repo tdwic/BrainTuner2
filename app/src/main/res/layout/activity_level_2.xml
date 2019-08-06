@@ -236,7 +236,7 @@
 
     <Button
         android:id="@+id/button_level_2"
-        android:layout_width="104dp"
+        android:layout_width="111dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
 
