@@ -25,4 +25,10 @@ public class level_1_a extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(level_1_a.this,level_1_a.class));
+        finish();
+    }
 }

@@ -19,12 +19,22 @@ public class game_start_page extends AppCompatActivity {
     }
 
     private void buttonConfigur(){
-        Button statBtn = (Button) findViewById(R.id.button_first);
-        statBtn.setOnClickListener(new View.OnClickListener() {
+
+        Thread thread = new Thread(){
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(game_start_page.this,game_menu.class));
+            public void run() {
+                try {
+                    sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finally {
+                    startActivity(new Intent(game_start_page.this,game_menu.class));
+                    finish();
+                }
+
             }
-        });
+        };
+        thread.start();
     }
 }

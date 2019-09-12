@@ -19,12 +19,24 @@ public class game_menu extends AppCompatActivity {
     }
 
     private void buttonConfigure(){
-        Button statBtn = (Button) findViewById(R.id.button_start);
-        statBtn.setOnClickListener(new View.OnClickListener() {
+        Button startBtn = (Button) findViewById(R.id.button_start);
+        Button exitBtn = findViewById(R.id.button_exit);
+
+
+        startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                  startActivity(new Intent(game_menu.this,MainActivity.class));
+
             }
         });
+
+        exitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 }
