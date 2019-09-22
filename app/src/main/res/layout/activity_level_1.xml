@@ -9,7 +9,7 @@
     tools:context=".level_1">
 
     <Button
-        android:id="@+id/button24"
+        android:id="@+id/bt2"
         android:layout_width="85dp"
         android:layout_height="56dp"
         android:layout_marginStart="8dp"
@@ -180,7 +180,7 @@
         app:layout_constraintVertical_bias="0.421" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/right1"
         android:layout_width="79dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
@@ -193,14 +193,14 @@
         android:textSize="30sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editText3"
+        app:layout_constraintEnd_toEndOf="@+id/userInput"
         app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.421" />
 
     <TextView
-        android:id="@+id/textView30"
+        android:id="@+id/left0"
         android:layout_width="79dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
@@ -218,7 +218,7 @@
         app:layout_constraintVertical_bias="0.324" />
 
     <TextView
-        android:id="@+id/textView31"
+        android:id="@+id/left3"
         android:layout_width="79dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
@@ -236,7 +236,7 @@
         app:layout_constraintVertical_bias="0.325" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/right3"
         android:layout_width="79dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
@@ -272,7 +272,7 @@
         app:layout_constraintVertical_bias="0.516" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/bt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -290,7 +290,7 @@
         app:layout_constraintVertical_bias="0.719" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/bt4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -324,7 +324,7 @@
         app:layout_constraintVertical_bias="0.719" />
 
     <Button
-        android:id="@+id/button16"
+        android:id="@+id/btNegative"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -341,7 +341,7 @@
         app:layout_constraintVertical_bias="0.816" />
 
     <Button
-        android:id="@+id/button17"
+        android:id="@+id/bt0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -358,7 +358,7 @@
         app:layout_constraintVertical_bias="0.816" />
 
     <Button
-        android:id="@+id/button18"
+        android:id="@+id/btDel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -375,7 +375,7 @@
         app:layout_constraintVertical_bias="0.816" />
 
     <Button
-        android:id="@+id/button19"
+        android:id="@+id/bt9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -392,7 +392,7 @@
         app:layout_constraintVertical_bias="0.914" />
 
     <Button
-        android:id="@+id/button20"
+        android:id="@+id/bt8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -409,7 +409,7 @@
         app:layout_constraintVertical_bias="0.914" />
 
     <Button
-        android:id="@+id/button21"
+        android:id="@+id/bt5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -426,7 +426,7 @@
         app:layout_constraintVertical_bias="0.914" />
 
     <Button
-        android:id="@+id/button22"
+        android:id="@+id/bt6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -501,7 +501,7 @@
         app:layout_constraintVertical_bias="0.353" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/userInput"
         android:layout_width="100dp"
         android:layout_height="59dp"
         android:layout_marginStart="8dp"

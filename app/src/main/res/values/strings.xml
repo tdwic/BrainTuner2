@@ -103,17 +103,17 @@
     <string name="l3txtv">01:00</string>
 
     <!--Level 4-->
-    <string name="time4">01:00</string>
+    <string name="time4"></string>
     <string name="answer4">Answer</string>
 
-    <string name="row4_1">5</string>
-    <string name="row4_2">8</string>
-    <string name="row4_3">7</string>
-    <string name="row4_4">6</string>
+    <string name="row4_1"></string>
+    <string name="row4_2"></string>
+    <string name="row4_3"></string>
+    <string name="row4_4"></string>
 
-    <string name="col4_1">2</string>
+    <string name="col4_1"></string>
     <string name="col4_2">X</string>
-    <string name="col4_3">7</string>
+    <string name="col4_3"></string>
 
     <string name="num4_1">1</string>
     <string name="num4_2">2</string>
@@ -122,6 +122,7 @@
     <string name="num4_5">5</string>
     <string name="num4_6">6</string>
     <string name="num4_7">7</string>
+    <string name="num4_">-</string>
     <string name="num4_8">8</string>
     <string name="num4_9">9</string>
     <string name="num4_0">0</string>
