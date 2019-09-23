@@ -2,6 +2,10 @@ package com.example.braintuner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -26,6 +30,9 @@ import java.util.concurrent.TimeUnit;
 
 
 public class level_4 extends AppCompatActivity {
+
+
+
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference GameValue,CurrentScore;
@@ -66,6 +73,7 @@ public class level_4 extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         GameValue = FirebaseDatabase.getInstance().getReference().child("GameValues").child("level4");
         CurrentScore = FirebaseDatabase.getInstance().getReference().child("CurrentScore");
+
 
 
         tableConnection();
@@ -158,6 +166,15 @@ public class level_4 extends AppCompatActivity {
                 if (isNumbersFetched == true) {
                     TimmerShow.setText("Time Out");
                     CurrentScore.child("level4").setValue(scoreVal);
+                    if (numberOfPass == 0){
+                        MediaPlayer NoAnyAnswer = MediaPlayer.create(level_4.this,R.raw.wawa);
+                        NoAnyAnswer.start();
+                    }
+                    try {
+                        Thread.sleep(3500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     Intent nextLevel = new Intent(level_4.this, level_4_a.class);
                     startActivity(nextLevel);
                     finish();
@@ -300,9 +317,9 @@ public class level_4 extends AppCompatActivity {
     }
 
     class numChange extends Thread{
+
         MediaPlayer myDuck = MediaPlayer.create(level_4.this,R.raw.duck);
         MediaPlayer myHtc = MediaPlayer.create(level_4.this,R.raw.htc);
-
         @Override
         public void run() {
             super.run();
@@ -335,7 +352,7 @@ public class level_4 extends AppCompatActivity {
 
                                         userAns = Integer.parseInt(UserAnswer.getText().toString());
 
-                                        if (userAns == (x + y)) {
+                                        if (userAns == (x * y)) {
 
                                             myHtc.start();
                                             UserAnswer.getText().clear();
@@ -350,7 +367,7 @@ public class level_4 extends AppCompatActivity {
                                             j--;
                                             numChange.this.run();
 
-                                        }else if (UserAnswer.length() >= rightText[5].length()){
+                                        }else if (UserAnswer.length() >= rightText[5].length()+1){
 
                                             myDuck.start();
 

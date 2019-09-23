@@ -40,6 +40,7 @@ public class level_4_a extends AppCompatActivity {
     private  TextView[] rightText = new TextView[6];
     private TextView TimmerShow,scoreShow;
     private EditText UserAnswer;
+    private Button num0,num1,num2,num3,num4,num5,num6,num7,num8,num9,clr,numNegative;
 
     private CountDownTimer countDownTimer;
     private long timeLeftMiliSec = 10000;
@@ -240,5 +241,115 @@ public class level_4_a extends AppCompatActivity {
 
         }
     };
+
+    class keyCode extends Thread{
+        @Override
+        public void run() {
+            super.run();
+
+            num0 = (Button)findViewById(R.id.bt0);
+            num1 = (Button)findViewById(R.id.bt1);
+            num2 = (Button)findViewById(R.id.bt2);
+            num3 = (Button)findViewById(R.id.bt3);
+            num4 = (Button)findViewById(R.id.bt4);
+            num5 = (Button)findViewById(R.id.bt5);
+            num6 = (Button)findViewById(R.id.bt6);
+            num7 = (Button)findViewById(R.id.bt7);
+            num8 = (Button)findViewById(R.id.bt8);
+            num9 = (Button)findViewById(R.id.bt9);
+            numNegative = (Button)findViewById(R.id.btNegative);
+            clr = (Button)findViewById(R.id.btDel);
+
+
+            num0.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserAnswer.setText(UserAnswer.getText().insert(UserAnswer.getText().length(),"0"));
+                }
+            });
+
+            num1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserAnswer.setText(UserAnswer.getText().insert(UserAnswer.getText().length(),"1"));
+                }
+            });
+
+            num2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserAnswer.setText(UserAnswer.getText().insert(UserAnswer.getText().length(),"2"));
+                }
+            });
+
+            num3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserAnswer.setText(UserAnswer.getText().insert(UserAnswer.getText().length(),"3"));
+                }
+            });
+
+            num4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserAnswer.setText(UserAnswer.getText().insert(UserAnswer.getText().length(),"4"));
+                }
+            });
+
+            num5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserAnswer.setText(UserAnswer.getText().insert(UserAnswer.getText().length(),"5"));
+                }
+            });
+
+            num6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserAnswer.setText(UserAnswer.getText().insert(UserAnswer.getText().length(),"6"));
+                }
+            });
+
+            num7.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserAnswer.setText(UserAnswer.getText().insert(UserAnswer.getText().length(),"7"));
+                }
+            });
+
+            num8.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserAnswer.setText(UserAnswer.getText().insert(UserAnswer.getText().length(),"8"));
+                }
+            });
+
+            num9.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserAnswer.setText(UserAnswer.getText().insert(UserAnswer.getText().length(),"9"));
+                }
+            });
+
+            numNegative.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UserAnswer.setText(UserAnswer.getText().insert(UserAnswer.getText().length(),"-"));
+                }
+            });
+
+            clr.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (UserAnswer.length() > 0){
+                        UserAnswer.setText(UserAnswer.getText().delete(UserAnswer.getText().length()-1,UserAnswer.getText().length()));
+                    }
+
+                }
+            });
+
+        }
+    }
+
 
 }

@@ -501,7 +501,7 @@
         app:layout_constraintVertical_bias="0.059" />
 
     <Button
-        android:id="@+id/button36"
+        android:id="@+id/bt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -519,7 +519,7 @@
         app:layout_constraintVertical_bias="0.874" />
 
     <Button
-        android:id="@+id/button37"
+        android:id="@+id/bt4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -536,7 +536,7 @@
         app:layout_constraintVertical_bias="0.764" />
 
     <Button
-        android:id="@+id/button38"
+        android:id="@+id/bt7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -553,7 +553,7 @@
         app:layout_constraintVertical_bias="0.648" />
 
     <Button
-        android:id="@+id/button39"
+        android:id="@+id/bt0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -570,7 +570,7 @@
         app:layout_constraintVertical_bias="0.764" />
 
     <Button
-        android:id="@+id/button40"
+        android:id="@+id/btClr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -587,7 +587,7 @@
         app:layout_constraintVertical_bias="0.987" />
 
     <Button
-        android:id="@+id/button41"
+        android:id="@+id/bt9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -604,14 +604,14 @@
         app:layout_constraintVertical_bias="0.874" />
 
     <Button
-        android:id="@+id/button42"
+        android:id="@+id/bt8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/row4_2"
+        android:text="@string/num4_8"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -621,7 +621,7 @@
         app:layout_constraintVertical_bias="0.648" />
 
     <Button
-        android:id="@+id/button43"
+        android:id="@+id/bt5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -638,7 +638,7 @@
         app:layout_constraintVertical_bias="0.987" />
 
     <Button
-        android:id="@+id/button44"
+        android:id="@+id/bt6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -655,7 +655,7 @@
         app:layout_constraintVertical_bias="0.648" />
 
     <Button
-        android:id="@+id/button45"
+        android:id="@+id/bt3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -672,7 +672,24 @@
         app:layout_constraintVertical_bias="0.874" />
 
     <Button
-        android:id="@+id/button46"
+        android:id="@+id/btNeg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/num4_"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.987" />
+
+    <Button
+        android:id="@+id/bt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
