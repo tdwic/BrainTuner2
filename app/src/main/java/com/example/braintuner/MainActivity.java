@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    //check
+    UserData userData = new UserData();
+    private static EditText userName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,13 +22,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void buttonConfigure(){
         Button statBtn = (Button) findViewById(R.id.btn_continue);
-        Button backBtn = (Button) findViewById(R.id.btn_continue3);
+        Button backBtn = (Button) findViewById(R.id.btn_back);
+        //userName = (EditText)findViewById(R.id.userName);
 
         statBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,level_1.class));
+                Intent nextLevel = new Intent(MainActivity.this,level_1.class);
+                startActivity(nextLevel);
                 finish();
+
             }
         });
 

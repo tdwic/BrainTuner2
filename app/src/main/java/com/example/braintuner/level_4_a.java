@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -24,17 +24,18 @@ import com.google.firebase.database.ValueEventListener;
 public class level_4_a extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference GameValue,CurrentScore,FinalScore;
+    DatabaseReference GameValue,CurrentScore;
 
-
-    private Handler mHandler = new Handler();
+    public UserData userData = new UserData("sdf",23);
 
     int leftNumber[]={0,0,0,0,0};
     int rightNumber[]={0,0,0,0,0};
 
     private  static  int i = 0,j=4,x=0,y= 0,rndomScore = 15,numberOfPass = 0;
     private int userAns;
-    private  int scoreVal;
+    private  int scoreVal = 0;
+    private boolean isNumbersFetched = false;
+    private boolean isNumbersOver = false;
 
     private  TextView[] leftText = new TextView[6];
     private  TextView[] rightText = new TextView[6];
@@ -43,13 +44,13 @@ public class level_4_a extends AppCompatActivity {
     private Button num0,num1,num2,num3,num4,num5,num6,num7,num8,num9,clr,numNegative;
 
     private CountDownTimer countDownTimer;
-    private long timeLeftMiliSec = 10000;
-    private long mili = 5000;
+    private long timeLeftMiliSec;
+    private long mili = 3000;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+       // userData.setUserName("Newly");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_4_a);
 
@@ -61,12 +62,39 @@ public class level_4_a extends AppCompatActivity {
 
         tableConnection();
 
-        startTimmer();
         UserAnswer.requestFocus();
-        mHandler.postDelayed(mRun, mili);
+
+        keyCode KeyCode = new keyCode();
+        KeyCode.start();
+        startTimmer();
+        updateTimer();
 
     }
+    private void  tableConnection(){
+        GameValue.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                numbers_Load(dataSnapshot);
+                for (int s= 0; s<=4; s++){
+                    leftText[s].setText(String.valueOf(leftNumber[s]));
+                    rightText[s].setText(String.valueOf(rightNumber[s]));
+                }
+                Log.d("finish", "finishddfdf: ");
+                numChange NumChange = new numChange();
+                NumChange.start();
+                isNumbersFetched = true;
+                startTimmer();
 
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("myTa", "Failed to read value.", error.toException());
+            }
+        });
+
+    }
 
     private void numbers_Load(DataSnapshot dataSnapshot){
         leftNumber[0] = Integer.parseInt(dataSnapshot.child("leftNumber1").getValue().toString());
@@ -80,6 +108,10 @@ public class level_4_a extends AppCompatActivity {
         rightNumber[2] = Integer.parseInt(dataSnapshot.child("rightNumber3").getValue().toString());
         rightNumber[3] = Integer.parseInt(dataSnapshot.child("rightNumber4").getValue().toString());
         rightNumber[4] = Integer.parseInt(dataSnapshot.child("rightNumber5").getValue().toString());
+
+        timeLeftMiliSec = Long.parseLong(dataSnapshot.child("time").getValue().toString());
+
+        Log.d("time", "finish: " + timeLeftMiliSec);
     }
 
     private void textViewFind(){
@@ -103,7 +135,12 @@ public class level_4_a extends AppCompatActivity {
         UserAnswer = findViewById(R.id.userInput);
     }
 
+
+
+
+
     private void startTimmer(){
+
         countDownTimer = new CountDownTimer(timeLeftMiliSec, 1000) {
             @Override
             public void onTick(long l) {
@@ -113,16 +150,31 @@ public class level_4_a extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                TimmerShow.setText("Time Out");
-                CurrentScore.child("level4_1").setValue(scoreVal);
-                Intent nextLevel = new Intent(level_4_a.this,player_score.class);
-                startActivity(nextLevel);
-                finish();
+                if (isNumbersFetched == true) {
+                    TimmerShow.setText("Time Out");
+
+                    if (numberOfPass == 0){
+                        MediaPlayer NoAnyAnswer = MediaPlayer.create(level_4_a.this,R.raw.wawa);
+                        NoAnyAnswer.start();
+                    }
+                    try {
+                        Thread.sleep(3500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }CurrentScore.child("level4_1").setValue(scoreVal);
+                    if (isNumbersOver == false) {
+                        Intent nextLevel = new Intent(level_4_a.this, player_score.class);
+
+                        startActivity(nextLevel);
+                        finish();
+                    }
+                }
             }
         }.start();
     }
 
     private void updateTimer(){
+
         String timeleft;
         int minits = (int) (timeLeftMiliSec / 60000);
         int seconds = (int) (timeLeftMiliSec % 60000 / 1000);
@@ -135,112 +187,15 @@ public class level_4_a extends AppCompatActivity {
         }
         if (minits < 1){
 
-            TimmerShow.setTextColor(Color.rgb(200,0,0));
+            // TimmerShow.setTextColor(Color.rgb(200,0,0));
         }
+
+
         timeleft += seconds;
         TimmerShow.setText(timeleft);
     }
 
-    private void  tableConnection(){
-        GameValue.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                numbers_Load(dataSnapshot);
-                for (int s= 0; s<=4; s++){
-                    leftText[s].setText(String.valueOf(leftNumber[s]));
-                    rightText[s].setText(String.valueOf(rightNumber[s]));
-                }
 
-
-
-                /*for (int x=0; x<=4; x++){
-                    Log.w("myTaR", "Lef" + leftNumber[x]);
-                    Log.w("myTaL", "Rgt" + rightNumber[x]);
-                }*/
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("myTa", "Failed to read value.", error.toException());
-            }
-        });
-
-    }
-
-    private Runnable mRun = new Runnable() {
-        @Override
-        public void run() {
-            if (i < leftNumber.length) {
-                leftText[5].setText(" ");
-                rightText[5].setText(" ");
-
-                leftText[5].setText(String.valueOf(leftNumber[j]));
-                rightText[5].setText(String.valueOf(rightNumber[j]));
-
-                x = Integer.parseInt(leftText[5].getText().toString());
-                y = Integer.parseInt(rightText[5].getText().toString());
-
-                leftText[j].setText(" ");
-                rightText[j].setText(" ");
-                /////////////////////////////////////////////
-
-                UserAnswer.setText("");
-                UserAnswer.addTextChangedListener(new TextWatcher() {
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                        Log.d("myTag", "onTextChanged: ");
-                        if (UserAnswer.length() > 0) {
-                            userAns = Integer.parseInt(UserAnswer.getText().toString());
-                        }
-                        if (userAns == (x + y)) {
-                            numberOfPass = numberOfPass + 1;
-
-                            Log.d("myCal", "numberOfPass" + numberOfPass);
-                            Log.d("scoreVal", "Before" + scoreVal);
-
-                            scoreVal = scoreVal + rndomScore;
-                            CurrentScore.child("level4_1").setValue(scoreVal);
-                            Log.d("scoreVal", "After" + scoreVal);
-
-                            userAns = 0;
-                            scoreShow.setTextColor(Color.rgb(200,0,0));
-                            scoreShow.setText(String.valueOf(scoreVal));
-
-                            mHandler.post(mRun);
-
-                        }
-                    }
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        if (numberOfPass == 12){
-                            Intent next = new Intent(level_4_a.this,player_score.class);
-                            startActivity(next);
-                            finish();
-                        }
-
-
-                    }
-                });
-
-
-
-                /////////////////////////////////////////////
-                j--;
-                i++;
-                //mHandler.post(mRun);
-            }else {
-
-                mHandler.removeCallbacks(mRun);
-            }
-
-
-        }
-    };
 
     class keyCode extends Thread{
         @Override
@@ -257,8 +212,8 @@ public class level_4_a extends AppCompatActivity {
             num7 = (Button)findViewById(R.id.bt7);
             num8 = (Button)findViewById(R.id.bt8);
             num9 = (Button)findViewById(R.id.bt9);
-            numNegative = (Button)findViewById(R.id.btNegative);
-            clr = (Button)findViewById(R.id.btDel);
+            numNegative = (Button)findViewById(R.id.btNeg);
+            clr = (Button)findViewById(R.id.btClr);
 
 
             num0.setOnClickListener(new View.OnClickListener() {
@@ -351,5 +306,85 @@ public class level_4_a extends AppCompatActivity {
         }
     }
 
+    class numChange extends Thread{
+
+        MediaPlayer myDuck = MediaPlayer.create(level_4_a.this,R.raw.duck);
+        MediaPlayer myHtc = MediaPlayer.create(level_4_a.this,R.raw.htc);
+        @Override
+        public void run() {
+            super.run();
+
+            if (j >= 0) {
+                leftText[5].setText(" ");
+                rightText[5].setText(" ");
+
+                leftText[5].setText(String.valueOf(leftNumber[j]));
+                rightText[5].setText(String.valueOf(rightNumber[j]));
+
+                x = Integer.parseInt(leftText[5].getText().toString());
+                y = Integer.parseInt(rightText[5].getText().toString());
+
+                leftText[j].setText(" ");
+                rightText[j].setText(" ");
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        UserAnswer.addTextChangedListener(new TextWatcher() {
+
+                            @Override
+                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                                Log.d("myTag", "onTextChanged: ");
+
+                                if (UserAnswer.length() > 0 || UserAnswer.length() >1){
+
+                                    userAns = Integer.parseInt(UserAnswer.getText().toString());
+
+                                    if (userAns == (x * y)) {
+
+                                        myHtc.start();
+                                        UserAnswer.getText().clear();
+                                        numberOfPass = numberOfPass + 1;
+                                        scoreVal = scoreVal + rndomScore;
+
+                                        CurrentScore.child("level4_1").setValue(scoreVal);
+
+                                        userAns = 0;
+                                        scoreShow.setTextColor(Color.rgb(200,0,0));
+                                        scoreShow.setText(String.valueOf(scoreVal));
+                                        j--;
+                                        numChange.this.run();
+
+                                    }else if (UserAnswer.length() >= rightText[5].length()+1){
+
+                                        myDuck.start();
+
+                                    }
+                                }
+                            }
+                            @Override
+                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+                            @Override
+                            public void afterTextChanged(Editable editable) {
+                                if (numberOfPass == 5){
+                                    Intent next = new Intent(level_4_a.this,player_score.class);
+                                    isNumbersOver = true;
+                                    CurrentScore.child("level4_1").setValue(scoreVal);
+                                    startActivity(next);
+                                    finish();
+                                }
+
+
+                            }
+                        });
+
+                    }
+
+                });
+
+            }
+
+        }
+    }
 
 }

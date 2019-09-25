@@ -1,11 +1,6 @@
 package com.example.braintuner;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -26,22 +21,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.concurrent.TimeUnit;
-
 
 public class level_4 extends AppCompatActivity {
-
-
-
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference GameValue,CurrentScore;
 
     UserData userData = new UserData();
-
-    int btnDigit;
-    long number;
-
 
     int leftNumber[]={0,0,0,0,0};
     int rightNumber[]={0,0,0,0,0};
@@ -50,6 +36,7 @@ public class level_4 extends AppCompatActivity {
     private int userAns;
     private  int scoreVal = 0;
     private boolean isNumbersFetched = false;
+    private boolean isNumbersOver = false;
 
     private  TextView[] leftText = new TextView[6];
     private  TextView[] rightText = new TextView[6];
@@ -59,12 +46,11 @@ public class level_4 extends AppCompatActivity {
 
     private CountDownTimer countDownTimer;
     private long timeLeftMiliSec;
-    private long mili = 3000;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        userData.setUserName("lanka");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_4);
 
@@ -169,7 +155,6 @@ public class level_4 extends AppCompatActivity {
             public void onFinish() {
                 if (isNumbersFetched == true) {
                     TimmerShow.setText("Time Out");
-                    CurrentScore.child("level4").setValue(scoreVal);
                     if (numberOfPass == 0){
                         MediaPlayer NoAnyAnswer = MediaPlayer.create(level_4.this,R.raw.wawa);
                         NoAnyAnswer.start();
@@ -178,10 +163,13 @@ public class level_4 extends AppCompatActivity {
                         Thread.sleep(3500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                    }CurrentScore.child("level4").setValue(scoreVal);
+                    if (isNumbersOver == false) {
+                        Intent nextLevel = new Intent(level_4.this, level_4_a.class);
+
+                        startActivity(nextLevel);
+                        finish();
                     }
-                    Intent nextLevel = new Intent(level_4.this, level_4_a.class);
-                    startActivity(nextLevel);
-                    finish();
                 }
             }
         }.start();
@@ -363,7 +351,9 @@ public class level_4 extends AppCompatActivity {
                                             numberOfPass = numberOfPass + 1;
                                             scoreVal = scoreVal + rndomScore;
 
-                                            CurrentScore.child(userData.getUserName()).child("level1").setValue(scoreVal);
+
+                                            CurrentScore.child("level4").setValue(scoreVal);
+
 
                                             userAns = 0;
                                             scoreShow.setTextColor(Color.rgb(200,0,0));
@@ -384,6 +374,8 @@ public class level_4 extends AppCompatActivity {
                                 public void afterTextChanged(Editable editable) {
                                     if (numberOfPass == 5){
                                         Intent next = new Intent(level_4.this,level_4_a.class);
+                                        isNumbersOver = true;
+                                        CurrentScore.child("level4").setValue(scoreVal);
                                         startActivity(next);
                                         finish();
                                     }

@@ -1,7 +1,7 @@
 package com.example.braintuner;
 
 public class FinalScore {
-    private String userName;
+    private String userName = "dfdf";
     private int finalScore;
 
     public FinalScore() {

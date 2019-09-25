@@ -2,9 +2,12 @@ package com.example.braintuner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +20,7 @@ public class player_score extends AppCompatActivity {
 
     private  int levelScore[] = {0,0,0,0,0,0,0,0},totalAnswer;
     private TextView userScoreShow,userShowName;
+    private Button playAgain,Exit;
 
     UserData userData = new UserData();
 
@@ -36,16 +40,29 @@ public class player_score extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_score);
 
-userData.setUserName("lanka");
-
         firebaseDatabase = FirebaseDatabase.getInstance();
-        finalScore = firebaseDatabase.getReference().child("CurrentScore").child(userData.getUserName());
+        finalScore = firebaseDatabase.getReference().child("CurrentScore");
         UserSave = firebaseDatabase.getReference().child("FinalScore");
         tableConnection();
-        userData.setUserName("df");
 
-        //
+        playAgain = (Button)findViewById(R.id.play);
+        Exit = (Button)findViewById(R.id.goAway);
 
+        playAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent previousLeve = new Intent(player_score.this,game_menu.class);
+                startActivity(previousLeve);
+                finish();
+            }
+        });
+
+        Exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
     }
@@ -72,7 +89,7 @@ userData.setUserName("lanka");
 
     private void numbers_Load(DataSnapshot dataSnapshot){
         userScoreShow = (TextView)findViewById(R.id.totalScore);
-        userShowName = (TextView)findViewById(R.id.userName);
+        //userShowName = (TextView)findViewById(R.id.userName);
 
         levelScore[0] = Integer.parseInt(dataSnapshot.child("level1").getValue().toString());
         levelScore[1] = Integer.parseInt(dataSnapshot.child("level1_1").getValue().toString());
@@ -87,9 +104,9 @@ userData.setUserName("lanka");
             totalAnswer = totalAnswer + levelScore[x];
         }
 
-        UserSave.child(userData.getUserName()).child("Score").setValue(totalAnswer);
+      UserSave.child("Score").setValue(totalAnswer);
         userScoreShow.setText(String.valueOf(totalAnswer));
-        userShowName.setText(userData.getUserName());
+        //userShowName.setText(String.valueOf(userData.getUserName()));
 
     }
 

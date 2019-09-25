@@ -129,6 +129,24 @@
     <string name="num4_del">Del</string>
 
 
+
+
+    <!--Level 4_1v-->
+
+    <string name="num4_1_1">1</string>
+    <string name="num4_2_1">2</string>
+    <string name="num4_3_1">3</string>
+    <string name="num4_4_1">4</string>
+    <string name="num4_5_1">5</string>
+    <string name="num4_6_1">6</string>
+    <string name="num4_7_1">7</string>
+    <string name="num4__1">-</string>
+    <string name="num4_8_1">8</string>
+    <string name="num4_9_1">9</string>
+    <string name="num4_0_1">0</string>
+    <string name="num4_del_1">Del</string>
+
+
     <!--Score page-->
     <string name="playBtnScore">Play  Again</string>
     <string name="exitBtnScore">Exit</string>
